@@ -1,2 +1,2 @@
 # To-Do-list
-using React.js - Class Component (Refresh my mind +1)
+using React.js - Hooks (Refresh my mind +1)
