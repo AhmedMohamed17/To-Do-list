@@ -21,11 +21,16 @@ function App() {
     updateitemlist([...itemlist, { id, task: state }]);
   };
   const onclickhandler = (item) => {
-    // let changeitems = itemlist.filter((e) => e.id !== item.id);
-    // updateitemlist({ changeitems });
-    const newArr = [...itemlist];
-    newArr.splice(item, 1);
-    updateitemlist(newArr);
+    let changeitems = [...itemlist];
+    changeitems = changeitems.filter((e) => e.id !== item.id);
+    console.log("changeitems = ", changeitems);
+    updateitemlist(changeitems);
+    // console.log("itemlist = ", item);
+    // const newArr = [...itemlist];
+    // console.log("before", newArr);
+    // newArr.splice(item, 1);
+    // console.log("after", newArr);
+    // updateitemlist(newArr);
   };
 
   return (
