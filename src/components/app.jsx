@@ -1,17 +1,40 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
 import { Item } from "./item";
+// my code is not clean becaues i'm save my ideas and my tries in code.
 function App() {
   const ToDoList = [
-    { id: 1, task: "Finish your tasks with nazmy" },
+    { id: 1, task: "finish your tasks with nazmy" },
     { id: 2, task: "meeting with your manager AbdelRhman" },
     { id: 3, task: "PS in CodeForce with osama khalil" },
   ];
   const [state, setState] = useState(null);
   const [itemlist, updateitemlist] = useState(ToDoList);
+  const todo12 = useRef();
 
-  const todo = useRef();
+  // const onsearchhandler = (e) => {
+  //   let searchitems = [...itemlist].filter((todo) => {
+  //     if (e.target.value === "") {
+  //       return updateitemlist(itemlist);
+  //     } else {
+  //       return todo.task.toLowerCase().includes(e.target.value.toLowerCase());
+  //     }
+  //   });
+  //   updateitemlist(searchitems);
 
+  //   console.log("itemlist  = ", e.target.value);
+  // };
+  const onsearchhandler = (e) => {
+    let searchTerm = e.target.value.trim().toLowerCase();
+    if (searchTerm === "") {
+      updateitemlist(itemlist);
+    } else {
+      let searchItems = itemlist.filter((todo) =>
+        todo.task.toLowerCase().includes(searchTerm)
+      );
+      updateitemlist(searchItems);
+    }
+  };
   const onChangehandler = (e) => {
     setState(e.target.value);
   };
@@ -38,12 +61,16 @@ function App() {
       <header>
         <div className="main">
           <h1 className="the-title">To-DO List</h1>
-          <form>
-            <input type="text" className="search" placeholder="search" />
-          </form>
+
+          <input
+            type="text"
+            className="search"
+            placeholder="search"
+            onChange={onsearchhandler}
+          />
 
           <div className="main query">
-            <ul>
+            <ul ref={todo12}>
               <Item items={itemlist} ONCliCK={onclickhandler} />
             </ul>
           </div>
@@ -51,7 +78,6 @@ function App() {
             <form onSubmit={onhandlesubmit}>
               <input
                 onChange={onChangehandler}
-                ref={todo}
                 type="text"
                 className="add"
                 placeholder="add to-do"

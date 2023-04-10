@@ -65,6 +65,9 @@ span {
 .add:active {
   border: rgb(122, 117, 117) solid 4px;
 }
+.filtered {
+  display: none;
+}
 
 /* .input:focus {
   background-color: #f4f4f4;
