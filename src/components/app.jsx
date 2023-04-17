@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Item } from "./item";
 
@@ -9,12 +9,11 @@ function App() {
     { id: 2, task: "meeting with your manager AbdelRhman" },
     { id: 3, task: "PS in CodeForce with osama khalil" },
   ];
-  ////////  using useState to Store Data and UseRef
+  ////////  using useState to Store Data
   const [itemlist, SetItemList] = useState(ToDoList);
   const [state, setState] = useState(null);
-  const todo12 = useRef(null);
 
-  const onsearchhandler = (e) => {
+  const OnSearchHandler = (e) => {
     // search input Function
     let searchTerm = e.target.value.trim().toLowerCase();
     if (searchTerm === "") {
@@ -27,7 +26,7 @@ function App() {
     }
   };
   const onChangeHandler = (e) => {
-    // pass data from input data tag to setState
+    // pass data from input data tag to state
     setState(e.target.value);
   };
   const onhandlesubmit = (e) => {
@@ -51,11 +50,11 @@ function App() {
           <input
             type="text"
             className="search"
-            placeholder="search"
-            onChange={onsearchhandler}
+            placeholder="Search"
+            onChange={OnSearchHandler}
           />
           <div className="main query">
-            <ul ref={todo12}>
+            <ul>
               <Item items={itemlist} ONCliCK={onclickhandler} />
             </ul>
           </div>
