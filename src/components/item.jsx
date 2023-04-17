@@ -2,8 +2,6 @@ import React from "react";
 import "./App.css";
 
 export const Item = React.memo(({ items, ONCliCK }) => {
-  console.log("items = ", items);
-
   return (
     <React.Fragment>
       {items.map((item) => (
