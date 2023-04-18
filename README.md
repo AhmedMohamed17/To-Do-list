@@ -1,7 +1,7 @@
 # To-Do-list
 a simple to do list app to manage your tasks.
 
-## Languages and tools 
+## Languages and tools :
 
 React.js - Hooks 
 
